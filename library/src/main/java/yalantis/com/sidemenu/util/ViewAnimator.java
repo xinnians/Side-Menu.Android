@@ -46,8 +46,11 @@ public class ViewAnimator<T extends Resourceble> {
         this.animatorListener = animatorListener;
     }
 
+    public void showMenuContent(){
+        showMenuContent(-1);
+    }
 
-    public void showMenuContent() {
+    public void showMenuContent(int selectPosition) {
         setViewsClickable(false);
         viewList.clear();
         double size = list.size();
@@ -64,6 +67,11 @@ public class ViewAnimator<T extends Resourceble> {
                 }
             });
             ((ImageView) viewMenu.findViewById(R.id.menu_item_image)).setImageResource(list.get(i).getImageRes());
+            if(selectPosition == i){
+                viewMenu.setSelected(true);
+            }else{
+                viewMenu.setSelected(false);
+            }
             viewMenu.setVisibility(View.GONE);
             viewMenu.setEnabled(false);
             viewList.add(viewMenu);
